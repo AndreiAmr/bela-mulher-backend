@@ -1,9 +1,10 @@
 import { Router } from "express";
-import { createUserController } from "../../modules/User/controllers/createUser.controller";
-import { validateCreateUser } from "../../modules/User/middlewares/validateCreateUser";
+import { loginRouter } from "./Authentication/login.routes";
+import { createUserRouter } from "./User/createUser.routes";
 
 const router = Router();
 
-router.post("/user/create", validateCreateUser, createUserController);
+router.use(loginRouter);
+router.use(createUserRouter);
 
-export { router as createUserRouter };
+export { router as mainRoutes };

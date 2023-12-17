@@ -5,7 +5,7 @@ const createUserControllerFactory = new MakeCreateUserController(
   createUserService
 );
 
-const createUserController = createUserControllerFactory.handle.bind(
+const createUserController = createUserControllerFactory.execute.bind(
   createUserControllerFactory
 );
 

@@ -3,7 +3,7 @@ import { ICreateUserService } from "../services/makeCreateUserService.factory";
 export class MakeCreateUserController {
   constructor(private readonly createUserService: ICreateUserService) {}
 
-  public async handle(req: any, res: any): Promise<void> {
+  public async execute(req: any, res: any): Promise<void> {
     try {
       const { name, email, password, nickname } = req.body;
 
