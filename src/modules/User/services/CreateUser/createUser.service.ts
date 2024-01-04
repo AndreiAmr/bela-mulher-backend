@@ -1,5 +1,5 @@
-import { UserDatabase } from "../../../database/User.database";
-import { MakeCreateUserService } from "./makeCreateUserService.factory";
+import { UserDatabase } from '@database/User.database';
+import { MakeCreateUserService } from './makeCreateUserService.factory';
 
 const userRepository = UserDatabase.getInstance();
 const createUserFactory = new MakeCreateUserService(userRepository);

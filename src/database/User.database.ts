@@ -1,4 +1,4 @@
-import { User } from "@prisma/client";
+import { type User } from "@prisma/client";
 import { prisma } from "../prisma/prisma";
 
 export interface ICreateUserDTO {
@@ -13,8 +13,8 @@ interface ICreateUserResponseDTO {
 }
 
 export interface IUserDatabase {
-  create(user: ICreateUserDTO): Promise<ICreateUserResponseDTO>;
-  findByEmail(email: string): Promise<User | null>;
+  create: (user: ICreateUserDTO) => Promise<ICreateUserResponseDTO>;
+  findByEmail: (email: string) => Promise<User | null>;
 }
 
 export class UserDatabase implements IUserDatabase {

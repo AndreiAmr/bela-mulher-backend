@@ -11,11 +11,53 @@ datasource db {
 }
 
 model User {
-  id        String   @id @default(uuid())
-  email     String   @unique
+  id         String       @id @default(uuid())
+  email      String       @unique
+  name       String
+  password   String
+  nickname   String?
+  createdAt  DateTime     @default(now())
+  updatedAt  DateTime     @updatedAt
+  Schedule   Schedule[]
+  Procedures Procedures[]
+}
+
+model Procedures {
+  id          String     @id @default(uuid())
+  name        String
+  description String
+  price       Float
+  duration    Int
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+  User        User       @relation(fields: [userId], references: [id])
+  userId      String
+  Schedule    Schedule[]
+}
+
+model Client {
+  id        String     @id @default(uuid())
   name      String
-  password  String
-  nickname  String?
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  phone     String
+  schedules Schedule[]
+}
+
+model Schedule {
+  id             String     @id @default(uuid())
+  professional   User       @relation(fields: [professionalId], references: [id])
+  professionalId String
+  Client         Client     @relation(fields: [clientId], references: [id])
+  clientId       String
+  Procedure      Procedures @relation(fields: [procedureId], references: [id])
+  procedureId    String
+  date           DateTime   @default(now())
+  status         Status     @relation(fields: [statusId], references: [id])
+  statusId       String     @default("1")
+  createdAt      DateTime   @default(now())
+}
+
+model Status {
+  id       String     @id @default(uuid())
+  name     String
+  Schedule Schedule[]
 }
