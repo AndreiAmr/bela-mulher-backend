@@ -1,5 +1,5 @@
-import { MakeCreateUserController } from "./makeCreateUserController.factory";
-import { createUserService } from "../services/createUser.service";
+import { MakeCreateUserController } from './makeCreateUserController.factory';
+import { createUserService } from '@modules/User/services/CreateUser/createUser.service';
 
 const createUserControllerFactory = new MakeCreateUserController(
   createUserService
