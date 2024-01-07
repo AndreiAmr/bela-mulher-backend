@@ -1,5 +1,5 @@
-import { MakeListScheduleController } from '@modules/Schedule/controllers/makeListScheduleController.factory';
-import { listScheduleService } from '@modules/Schedule/services/listSchedule.service';
+import { MakeListScheduleController } from "@modules/Schedule/controllers/makeListScheduleController.factory";
+import { listScheduleService } from "@modules/Schedule/services/listSchedule.service";
 
 const listScheduleControllerFactory = new MakeListScheduleController(
   listScheduleService

@@ -1,5 +1,5 @@
-import { ScheduleDatabase } from '@database/Schedule.database';
-import { MakeListScheduleService } from '@modules/Schedule/services/makeListScheduleService.factory';
+import { ScheduleDatabase } from "@database/Schedule.database";
+import { MakeListScheduleService } from "@modules/Schedule/services/makeListScheduleService.factory";
 
 const scheduleDatabase = ScheduleDatabase.getInstance();
 const listScheduleServiceFactory = new MakeListScheduleService(

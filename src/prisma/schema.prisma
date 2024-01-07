@@ -11,13 +11,13 @@ datasource db {
 }
 
 model User {
-  id         String       @id @default(uuid())
-  email      String       @unique
+  id         String      @id @default(uuid())
+  email      String      @unique
   name       String
   password   String
   nickname   String?
-  createdAt  DateTime     @default(now())
-  updatedAt  DateTime     @updatedAt
+  createdAt  DateTime    @default(now())
+  updatedAt  DateTime    @updatedAt
   Schedule   Schedule[]
   Procedures Procedure[]
 }
@@ -43,21 +43,29 @@ model Client {
 }
 
 model Schedule {
-  id             String     @id @default(uuid())
-  professional   User       @relation(fields: [professionalId], references: [id])
+  id             String       @id @default(uuid())
+  professional   User         @relation(fields: [professionalId], references: [id])
   professionalId String
-  Client         Client     @relation(fields: [clientId], references: [id])
+  Client         Client       @relation(fields: [clientId], references: [id])
   clientId       String
-  Procedure      Procedure @relation(fields: [procedureId], references: [id])
+  Procedure      Procedure    @relation(fields: [procedureId], references: [id])
   procedureId    String
-  date           DateTime   @default(now()) @db.Timestamp(3)
-  status         Status     @relation(fields: [statusId], references: [id])
-  statusId       String     @default("1")
-  createdAt      DateTime   @default(now()) @db.Timestamp(3)
-  details        String? 
+  date           DateTime     @default(now()) @db.Timestamp(3)
+  status         Status       @relation(fields: [statusId], references: [id])
+  statusId       String
+  createdAt      DateTime     @default(now()) @db.Timestamp(3)
+  scheduleType   ScheduleType @relation(fields: [scheduleTypeId], references: [id])
+  scheduleTypeId String
+  details        String?
 }
 
 model Status {
+  id       String     @id @default(uuid())
+  name     String
+  Schedule Schedule[]
+}
+
+model ScheduleType {
   id       String     @id @default(uuid())
   name     String
   Schedule Schedule[]

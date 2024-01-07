@@ -1,4 +1,4 @@
-import { IListScheduleService } from '@modules/Schedule/services/makeListScheduleService.factory';
+import { IListScheduleService } from "@modules/Schedule/services/makeListScheduleService.factory";
 
 export class MakeListScheduleController {
   constructor(private readonly listScheduleService: IListScheduleService) {}
